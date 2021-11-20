@@ -1,58 +1,58 @@
 from cv2 import cv2
+# generate random integer values
+from random import seed
+from random import randint
 import numpy as np
 import mss
 import pyautogui
 import time
 import sys
 
+
 import yaml
 
 import requests
 
-cat = """
-                                                _
-                                                \`*-.
-                                                 )  _`-.
-                                                .  : `. .
-                                                : _   '  \\
-                                                ; *` _.   `*-._
-                                                `-.-'          `-.
-                                                  ;       `       `.
-                                                  :.       .        \\
-                                                  . \  .   :   .-'   .
-                                                  '  `+.;  ;  '      :
-                                                  :  '  |    ;       ;-.
-                                                  ; '   : :`-:     _.`* ;
-                                               .*' /  .*' ; .*`- +'  `*'
-                                               `*-*   `*-*  `*-*'
-====== Please, consider buying me an coffe :) =========================
-==== 0xbd06182D8360FB7AC1B05e871e56c76372510dDf =======================
-==== https://www.paypal.com/donate?hosted_button_id=JVYSC6ZYCNQQQ =====
+dog = """
+                                                           .....               
+                                                           ......               
+                                                         .........              
+                                                       .............            
+    ...                                              ..................         
+    ....                                           ..........................   
+    ....                                             ........................   
+    .....                                     ....      ....................    
+     .....                               .............       .                  
+      ....................................................                      
+       .....................................................                    
+      ......................................................                    
+     .......................................................                    
+     .......................................................                    
+     .......................................................                    
+     ..................       .............................                     
+      .................             ......................                      
+      .................                     ..............                      
+       ...............                       ............                       
+       ..............                        ...... .....                       
+      ...... .......                         ...... .....                       
+     ......  ......                          .....  .....                       
+    .......  ......                         ......  .....                       
+    .......  .......                        .....   .....                       
+     ......   .......                       ......  .....                       
+     .......   .......                      ................                    
+      .......      ...                                  ..                      
+                                                             
+==== Fork from  https://github.com/mpcabete/bombcrypto-bot ============
+==== Please consider to visit his original repo =======================
+==== Multi account version under developement  ========================
 =======================================================================
 
 >>---> Press ctrl + c to kill the bot.
 >>---> Some configs can be fount in the config.yaml file.
 """
 
-print(cat)
+print(dog)
 
-headers = {
-    'authority': 'plausible.io',
-    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36',
-    'content-type': 'text/plain',
-    'accept': '*/*',
-    'sec-gpc': '1',
-    'origin': 'https://mpcabete.xyz',
-    'sec-fetch-site': 'cross-site',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-dest': 'empty',
-    'referer': 'https://mpcabete.xyz/',
-    'accept-language': 'en-US,en;q=0.9',
-}
-
-data = '{"n":"pageview","u":"https://mpcabete.xyz/bombcrypto/","d":"mpcabete.xyz","r":"https://mpcabete.xyz/","w":1182}'
-
-response = requests.post('https://plausible.io/api/event', headers=headers, data=data)
 
 if __name__ == '__main__':
 
@@ -92,6 +92,7 @@ def dot():
 
 def clickBtn(img,name=None, timeout=3, trashhold = ct['default']):
     dot()
+    timeoutVal= randint(1,timeout)
     if not name is None:
         pass
         # print('waiting for "{}" button, timeout of {}s'.format(name, timeout))
@@ -100,7 +101,7 @@ def clickBtn(img,name=None, timeout=3, trashhold = ct['default']):
     while(not clicked):
         matches = positions(img, trashhold=trashhold)
         if(len(matches)==0):
-            hast_timed_out = time.time()-start > timeout
+            hast_timed_out = time.time()-start > timeoutVal
             if(hast_timed_out):
                 if not name is None:
                     pass
@@ -351,20 +352,3 @@ def main():
 
 
 main()
-
-
-
-
-
-#cv2.imshow('img',sct_img)
-#cv2.waitKey()
-
-# chacar se tem o sign antes de aperta o connect wallet ?
-# arrumar aquela parte do codigo copiado onde tem q checar o sign 2 vezes ?
-# colocar o botao em pt
-# melhorar o log
-# salvar timestamp dos clickes em newmap em um arquivo
-# soh resetar posiçoes se n tiver clickado em newmap em x segundos
-
-# pegar o offset dinamicamente
-# clickar so no q nao tao trabalhando pra evitar um loop infinito no final do scroll se ainda tiver um verdinho
