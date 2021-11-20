@@ -47,7 +47,6 @@ python index.py
 
 # How to use?
 
-Abra o terminal, se ainda não tiver navegado para a pasta do bot dê novamente o comando
 Open the terminal, cd into the folder if you haven't yet:
 
 ```
