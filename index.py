@@ -92,7 +92,6 @@ def dot():
 
 def clickBtn(img,name=None, timeout=3, trashhold = ct['default']):
     dot()
-    timeoutVal= randint(1,timeout)
     if not name is None:
         pass
         # print('waiting for "{}" button, timeout of {}s'.format(name, timeout))
@@ -101,7 +100,7 @@ def clickBtn(img,name=None, timeout=3, trashhold = ct['default']):
     while(not clicked):
         matches = positions(img, trashhold=trashhold)
         if(len(matches)==0):
-            hast_timed_out = time.time()-start > timeoutVal
+            hast_timed_out = time.time()-start > timeout
             if(hast_timed_out):
                 if not name is None:
                     pass
@@ -260,6 +259,9 @@ def login():
             # o ideal era que ele alternasse entre checar cada um dos 2 por um tempo 
             # print('sleep in case there is no metamask text removed')
             # time.sleep(20)
+    elif not clickBtn(select_wallet_hover_img, name='selectMetamaskBtn'):
+        if clickBtn(select_metamask_no_hover_img, name='selectMetamaskHoverBtn', trashhold = ct['select_wallet_buttons'] ):
+            pass
     else:
         pass
         # print('sleep in case there is no metamask text removed')
