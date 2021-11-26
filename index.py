@@ -77,6 +77,7 @@ commom_img = cv2.imread('targets/commom-text.png')
 arrow_img = cv2.imread('targets/go-back-arrow.png')
 hero_img = cv2.imread('targets/hero-icon.png')
 x_button_img = cv2.imread('targets/x.png')
+ok_button_tw = cv2.imread('targets/ok_button_tw.png')
 teasureHunt_icon_img = cv2.imread('targets/treasure-hunt-icon.png')
 ok_btn_img = cv2.imread('targets/ok.png')
 connect_wallet_btn_img = cv2.imread('targets/connect-wallet.png')
@@ -213,6 +214,8 @@ def goToHeroes():
     # time.sleep(5)
 
 def goToGame():
+    # in case teamviewer popup
+    clickBtn(ok_button_tw)
     # in case of server overload popup
     clickBtn(x_button_img)
     # time.sleep(3)
