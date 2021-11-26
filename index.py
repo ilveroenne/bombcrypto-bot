@@ -210,6 +210,7 @@ def goToHeroes():
         login_attempts = 0
 
     # time.sleep(5)
+    clickBtn(ok_button_tw)
     clickBtn(hero_img)
     # time.sleep(5)
 
@@ -225,6 +226,7 @@ def goToGame():
 
 def refreshHeroesPositions():
     clickBtn(arrow_img)
+    clickBtn(ok_button_tw)
     clickBtn(teasureHunt_icon_img)
     # time.sleep(3)
     clickBtn(teasureHunt_icon_img)
