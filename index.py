@@ -86,6 +86,10 @@ select_metamask_no_hover_img = cv2.imread('targets/select-wallet-1-no-hover.png'
 sign_btn_img = cv2.imread('targets/select-wallet-2.png')
 new_map_btn_img = cv2.imread('targets/new-map.png')
 green_bar = cv2.imread('targets/green-bar.png')
+brave_0 = cv2.imread('targets/brave_0.png')
+brave_1 = cv2.imread('targets/brave_1.png')
+
+index = 1
 
 def dot():
     sys.stdout.write(".")
@@ -231,6 +235,17 @@ def refreshHeroesPositions():
     # time.sleep(3)
     clickBtn(teasureHunt_icon_img)
 
+def changeBrowser():
+    global index 
+    if(index == 0):
+      clickBtn(brave_0)
+      index = index + 1
+      return
+    elif(index == 1):
+       clickBtn(brave_1)
+       index = index - 1
+       return   
+
 def login():
     global login_attempts
 
@@ -316,11 +331,15 @@ def main():
     time.sleep(5)
     t = c['time_intervals']
 
+    global index
+    index = 1
+
     last = {
     "login" : 0,
     "heroes" : 0,
     "new_map" : 0,
-    "refresh_heroes" : 0
+    "refresh_heroes" : 0,
+    "change_browser" : 0
     }
 
     while True:
@@ -350,6 +369,11 @@ def main():
             last["refresh_heroes"] = now
             sys.stdout.write('\nRefreshing Heroes Positions.\n')
             refreshHeroesPositions()
+
+        if now - last["change_browser"] > t['change_operating_browser'] * 60 :
+            last["change_browser"] = now
+            sys.stdout.write('\nChanging browser\n')
+            changeBrowser()
 
         #clickBtn(teasureHunt)
         sys.stdout.write(".")
