@@ -285,17 +285,6 @@ def logger(message, progress_indicator = False):
 
     return True
 
-def changeBrowser():
-    global index 
-    if(index == 0):
-      clickBtn(brave_0)
-      index = index + 1
-      return
-    elif(index == 1):
-       clickBtn(brave_1)
-       index = index - 1
-       return 
-
 def clickBtn(img,name=None, timeout=3, threshold = ct['default']):
     logger(None, progress_indicator=True)
     if not name is None:
@@ -599,12 +588,6 @@ def main():
             logger('Refreshing Heroes Positions.')
             refreshHeroesPositions()
 
-        if now - last["change_browser"] > t['change_operating_browser'] * 60 :
-            last["change_browser"] = now
-            sys.stdout.write('\nChanging browser\n')
-            changeBrowser()
-            
-        #clickBtn(teasureHunt)
         logger(None, progress_indicator=True)
 
         sys.stdout.flush()
